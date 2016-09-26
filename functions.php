@@ -5,8 +5,12 @@ if ( ! function_exists( 'stdpltf_setup' ) ) :
 
     function stdpltf_setup() {
 
-        /* Modules included in this theme */
-        //require_once get_template_directory() . "/modules/content.module.php";
+        /* Include classes */
+        require_once get_template_directory() . "/classes/pagebuilder/pagebuilder.class.php";
+        require_once get_template_directory() . "/classes/pagebuilder/module.class.php";
+
+        /* Include modules */
+        require_once get_template_directory() . "/modules/content.module.php";
 
     }
 
