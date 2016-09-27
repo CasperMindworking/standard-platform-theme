@@ -6,22 +6,22 @@
 
 class MwPageBuilder {
 
-    public $name, $type, $render_function;
+    public $name, $type, $frontend_render;
 
-    public function __construct($name, $type, $render_function) {
+    public function __construct($type, $name, $frontend_render) {
 
-        $this->name = $name;
         $this->type = $type;
-        $this->render_function = $render_function;
+        $this->name = $name;
+        $this->frontend_render = $frontend_render;
 
         // Add the render action to WordPress
-        if( !empty($this->name) && !empty($this->type) )
+        if( !empty($this->type) && !empty($this->name) )
             add_action('mwpb_' . $this->type . '_' . $this->name, array($this, 'render'));
 
     }
 
     public function render() {
-        call_user_func($this->render_function);
+        call_user_func($this->frontend_render);
     }
 
 }
